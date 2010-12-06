@@ -2,9 +2,9 @@ Shortener -- simple URL shortening with Sinatra and OpenKeyVal.org
 
 1.) Basic UI:
 
- ![Homepage](http://imgur.com/af7TS.png)
- ![Homepage with URL in form](http://imgur.com/xQV0J.png)
- ![Submitted url with response](http://imgur.com/WM3kZ.png)
+ ![Homepage](http://i.imgur.com/af7TS.png)
+ ![Homepage with URL in form](http://i.imgur.com/xQV0J.png)
+ ![Submitted url with response](http://i.imgur.com/WM3kZ.png)
 
 2.) Underlying technologies:
 
