@@ -1,6 +1,12 @@
 # shortener.rb - Josh Sandlin - 12/5/2010 - 6:19PM
 # Simple url shortener with Sinatra and OpenKeyVal.org
 
+# "THE BEER-WARE LICENSE" (Revision 43):
+# <joshua.sandlin@gmail.com> wrote this file. As long as you retain this
+# notice you can do whatever you want with this stuff. If we meet some day,
+# and you think this stuff is worth it, you can buy me a beer in return.
+#   ~Josh Sandlin
+
 require 'rubygems'
 require 'sinatra'
 require 'flyingv'
@@ -18,11 +24,11 @@ def gen_key( string )
   return md5[0, 3] + md5[29, 31]
 end
 
-def send( key, val )
+def send_key_val( key, val )
   FlyingV.post( key, val )
 end
 
-def get( key )
+def get_by_key( key )
   FlyingV.get( key )
 end
 
@@ -31,14 +37,15 @@ get '/' do
   erb :index
 end
 
-post '/' do |url|
+post '/' do
+  url = params[:url]
   key = gen_key( url )
-  send( key, url )
+  send_key_val( key, url )
   @short_url = "http://#{HOST}:#{PORT}/#{key}"
   erb :submitted
 end
 
 get '/:url' do |hash_key|
-  original_url = get( hash_key )
+  original_url = get_by_key( hash_key )
   redirect original_url
 end
